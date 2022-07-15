@@ -1,0 +1,10 @@
+lessons from pilots:
+
+16 categories doesn't seem to produce good brainscores. Trying 1000. Variety in training set is important (see Talia Konkle's VSS 2022 poster).
+Initial versions subtracted values (e.g. kernel size) from one layer and added to another, preserving total number of parameters (approx). This seemed a little slow so the values now are set according to a linear slope across layers that is altered.
+
+Version 1:  COGnet with 5 layers, seemed to learn a positive kernel slope (mean 8: slope: 1.5) and negative featuremap slope (mean: 128, slope: -4).
+Version 2:  Increased layers to 8 layers, had to do maxpool on alternate layers to keep the feature maps from shrinking too quickly. Brain scores are lower for 8 layers (~.1) than 5 layers (~.3). Do deeper networks learn more slowly? Next version will have fewer layers to test this.
+Version 3: A 3 layer network started out with a brainscore of .32, the best score yet, with the original config and did not improve in subsequent configurations. Either shallower networks are better or they just learn faster. Almost certainly the latter. Perhaps network depth should be held constant.
+Version 4: Increased to 16 layers, maxpool every 4 layers, slope increments are halved. Lets see what happens.
+
